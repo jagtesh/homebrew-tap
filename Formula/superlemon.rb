@@ -1,8 +1,8 @@
 class Superlemon < Formula
   desc "Native graphical interface built around Neovim"
   homepage "https://github.com/jagtesh/superlemon"
-  url "https://github.com/jagtesh/superlemon/archive/refs/tags/v0.1.2.tar.gz"
-  sha256 "cb0916a4dcdf22acb2a3b158bcb41261cbdf43ecfeae7e2aa3ce275f4bd9c6f3"
+  url "https://github.com/jagtesh/superlemon/archive/refs/tags/v0.1.3.tar.gz"
+  sha256 "8f02911d7045e0bf7b82671d30f14feea6e569b43c302b538e96186579c6f452"
   license "BSD-3-Clause"
 
   depends_on xcode: ["16.0", :build]
@@ -30,6 +30,7 @@ class Superlemon < Formula
       odie "Neovim distribution is incomplete" unless (nvim_distribution/"bin/nvim").executable?
 
       ENV["SUPERLEMON_NVIM_DIST"] = nvim_distribution
+      ENV["SUPERLEMON_SWIFTPM_DISABLE_SANDBOX"] = "1"
       system source_root/"scripts/package-app.sh", "release"
     end
 
