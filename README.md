@@ -2,21 +2,23 @@
 
 ## Superlemon
 
-Superlemon preview releases are currently ad-hoc signed rather than Apple
-Developer ID signed and notarized. Install the checksum-pinned release with:
+The Superlemon formula downloads checksum-pinned source and builds the native
+application locally. Install it with:
 
 ```sh
 brew tap jagtesh/tap
-brew install --cask --no-quarantine superlemon
+brew install superlemon
 ```
 
-`--no-quarantine` bypasses macOS Gatekeeper for Superlemon. Only use it if you
-trust the [Superlemon repository](https://github.com/jagtesh/superlemon) and its
-published release. Homebrew still verifies the archive against the SHA-256
-checksum recorded in this tap.
+This requires macOS 14 or newer and Xcode 16 or newer. Homebrew also downloads
+the pinned Neovim distribution as a verified build resource, then packages it
+inside the locally built `Superlemon.app`.
+
+Run `superlemon` from a project directory, or open the application bundle at
+the path printed after installation.
 
 To uninstall:
 
 ```sh
-brew uninstall --cask superlemon
+brew uninstall superlemon
 ```
